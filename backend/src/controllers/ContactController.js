@@ -17,6 +17,29 @@ module.exports = {
         const contact = await Contact.create(req.body)
 
         return res.json(contact)
+    },
+
+    async search (req, res){
+
+        const contact = await Contact.findById(req.params.id)
+
+        return res.json(contact)
+    },
+
+    async update (req, res) {
+        
+        const contact = await Contact.findByIdAndUpdate(req.params.id, req.body,{
+            new: true
+        })
+
+        return res.json(contact)
+    },
+
+    async destroy(req, res){
+
+        await Contact.findByIdAndRemove(req.params.id)
+        
+        res.send('Excluído com sucesso!')
     }
 
 }

@@ -9,5 +9,9 @@ app.get('/', (req, res)=>{
 
 app.post('/contact', ContactController.store)
 app.get('/contact', ContactController.index)
+app.get('/contact/:id', ContactController.search)
+app.put('/contact/:id', ContactController.update)
+app.delete('/contact/:id', ContactController.destroy)
+
 
 module.exports = app
